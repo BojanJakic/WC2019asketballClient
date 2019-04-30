@@ -2,7 +2,7 @@
   <div class="form-group">
     <label>Group: </label>
     <select class="form-control" formControlName="groupName" [(ngModel)]="teamGroup.groupName">
-      <option *ngFor="let key of groupKeys" [value]="key - 1">{{groupsNames[key-1]}}</option>
+      <option *ngFor="let groupName of groupsNames" [value]="groupName">{{groupName}}</option>
     </select>
   </div>
   <div style="margin-left: 20px;" ngbDropdown autoClose="outside">
@@ -15,5 +15,5 @@
       </div>
     </div>
   </div>
-  <button (click)="save()">SAVE</button>
+  <button [disabled]="!isValid" (click)="save()">SAVE</button>
 </form>

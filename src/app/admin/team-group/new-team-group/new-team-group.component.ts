@@ -14,10 +14,10 @@ import { TeamGroupService } from '../../../services/team-group/team-group.servic
 export class NewTeamGroupComponent implements OnInit {
 
   groupsNames: string[];
-  groupKeys: string[];
   teams: RealTeam[];
   selectedTeams: RealTeam[] = [];
   isLoaded: boolean;
+  isValid: boolean  = true;
 
   newTeamGroupForm: FormGroup;
   teamGroup: TeamGroup = {
@@ -26,7 +26,6 @@ export class NewTeamGroupComponent implements OnInit {
   }
 
   constructor(private realTeamService: RealTeamService, private teamGroupService: TeamGroupService) {
-    this.groupKeys = Object.keys(GroupName).filter(Number)
     this.groupsNames = Object.values(GroupName).filter(k => typeof k === 'string')
   }
 
@@ -40,6 +39,10 @@ export class NewTeamGroupComponent implements OnInit {
 
   save() {
     this.setSelectedTeam();
+    if(this.teamGroup.teams.length !== 4) {
+      this.isValid = false;
+      return;
+    }
     this.teamGroupService.save(this.teamGroup).subscribe(response => {
       console.log(response)
     }, error => {

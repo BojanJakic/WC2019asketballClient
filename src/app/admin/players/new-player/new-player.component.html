@@ -26,7 +26,7 @@
   <div>
     <label>Position:</label>
     <select class="form-control" formControlName="position" [(ngModel)]="player.position">
-      <option *ngFor="let key of positionKeys" [value]="key">{{positionNames[key-1]}}</option>
+      <option *ngFor="let position of positionNames; let i = index" [value]="position">{{position}}</option>
     </select>
   </div>
   <div>

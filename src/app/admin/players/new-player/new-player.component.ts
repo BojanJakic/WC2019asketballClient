@@ -26,11 +26,9 @@ export class NewPlayerComponent implements OnInit {
   playerForm: FormGroup;
   teams: RealTeam[] = [];
   isLoaded: boolean;
-  positionKeys: string[];
   positionNames: string[];
 
   constructor(private realTeamService: RealTeamService, private playerService: PlayerService) { 
-    this.positionKeys = Object.keys(PlayerPosition).filter(Number)
     this.positionNames = Object.values(PlayerPosition).filter(k => typeof k === 'string')
   }
 
@@ -44,6 +42,7 @@ export class NewPlayerComponent implements OnInit {
 
   save() {
     this.setDateOfBirth();
+    console.log(this.playerForm.value)
     this.playerService.save(this.playerForm.value).subscribe(response => {
       console.log(response)
     }, error => {
