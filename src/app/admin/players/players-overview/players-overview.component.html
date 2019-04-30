@@ -1,7 +1,5 @@
-<div *ngFor="let player of players">
-  <div>{{player.firstName}}</div>
-  <div>{{player.lastName}}</div>
-  <div>{{player.height}}</div>
-  <div>{{player.dateOfBirth}}</div>
-  <div>{{player.realTeam.name}}</div>
+<div *ngFor="let player of players; let i = index">
+  <span>{{i + 1}}. &nbsp;&nbsp;</span>
+  <span>{{player.firstName}}</span>
+  <span>{{player.lastName}}</span>
 </div>
