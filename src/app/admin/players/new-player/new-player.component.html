@@ -1,3 +1,38 @@
-<p>
-  new-player works!
-</p>
+<form *ngIf="isLoaded" [formGroup]="playerForm">
+  <div class="form-group">
+    <label>First name:</label>
+    <input formControlName="firstName" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Last name:</label>
+    <input formControlName="lastName" class="form-control" type="text">
+  </div>
+  <div>
+    <label>Height:</label>
+    <input formControlName="height" type="text">
+  </div>
+  <div>
+    <label>Team:</label>
+    <div ngbDropdown autoClose="outside">
+      <button ngbDropdownToggle>dropdown</button>
+      <div ngbDropdownMenu>
+        <div class="custom-control custom-radio" *ngFor="let team of teams; let i=index">
+            <input id="team{{i}}" [value]="team" class="custom-control-input" (change)="onTeamChange(team)" type="radio">
+            <label for="team{{i}}" class="custom-control-label">{{team.name}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <label>Date of birth:</label>
+    <input formControlName="dateOfBirth" type="text" ngbDatepicker #d="ngbDatepicker"/>
+    <button (click)="d.toggle()">Toggle</button>
+  </div>
+  <div>
+    <label>Fantasy Value</label>
+    <input formControlName="fantasyValue" type="text">
+  </div>
+  <div>
+    <button (click)="save()" type="button" class="btn btn-primary">Save</button>
+  </div>
+</form>

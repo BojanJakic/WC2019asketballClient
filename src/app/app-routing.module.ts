@@ -14,42 +14,42 @@ import { NewTeamGroupComponent } from '../app/admin/team-group/new-team-group/ne
 
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    {
-        path: 'admin',
-        component: AdminComponent,
-        children: [
-            { path: '', redirectTo: 'players', pathMatch: 'full' },
-            {
-                path: 'teams', component: TeamHomeComponent,
-                children: [
-                    { path: '', redirectTo: 'new-team', pathMatch: 'full' },
-                    { path: 'new-team', component: NewTeamComponent },
-                    { path: 'teams-overview', component: TeamsOverviewComponent }
-                ]
-            },
-            {
-                path: 'players', component: PlayerHomeComponent,
-                children: [
-                    { path: '', redirectTo: 'new-player', pathMatch: 'full' },
-                    { path: 'new-player', component: NewPlayerComponent },
-                    { path: 'players-overview', component: PlayersOverviewComponent }
-                ]
-            },
-            {
-                path: 'team-groups', component: TeamGroupHomeComponent,
-                children: [
-                    { path: '', redirectTo: 'new-team-group', pathMatch: 'full' },
-                    { path: 'new-team-group', component: NewTeamGroupComponent },
-                    { path: 'team-group-overview', component: TeamGroupOverviewComponent}
-                ]
-            }
-        ]
-    }
+	{ path: '', component: HomeComponent },
+	{
+		path: 'admin',
+		component: AdminComponent,
+		children: [
+			{ path: '', redirectTo: 'players', pathMatch: 'full' },
+			{
+				path: 'teams', component: TeamHomeComponent,
+				children: [
+					{ path: '', redirectTo: 'new-team', pathMatch: 'full' },
+					{ path: 'new-team', component: NewTeamComponent },
+					{ path: 'teams-overview', component: TeamsOverviewComponent }
+				]
+			},
+			{
+				path: 'players', component: PlayerHomeComponent,
+				children: [
+					{ path: '', redirectTo: 'new-player', pathMatch: 'full' },
+					{ path: 'new-player', component: NewPlayerComponent },
+					{ path: 'players-overview', component: PlayersOverviewComponent }
+				]
+			},
+			{
+				path: 'team-groups', component: TeamGroupHomeComponent,
+				children: [
+					{ path: '', redirectTo: 'new-team-group', pathMatch: 'full' },
+					{ path: 'new-team-group', component: NewTeamGroupComponent },
+					{ path: 'team-group-overview', component: TeamGroupOverviewComponent }
+				]
+			}
+		]
+	}
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+	imports: [RouterModule.forRoot(appRoutes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }

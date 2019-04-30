@@ -1,3 +1,9 @@
-<p>
-  new-team works!
-</p>
+<form [formGroup]="teamForm">
+  <div class="form-group">
+    <label>
+      Name:
+    </label>
+    <input class="form-control" formControlName="name">
+  </div>
+  <button (click)="save()">SAVE</button>
+</form>

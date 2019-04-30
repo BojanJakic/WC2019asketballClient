@@ -1,3 +1,7 @@
-<p>
-  players-overview works!
-</p>
+<div *ngFor="let player of players">
+  <div>{{player.firstName}}</div>
+  <div>{{player.lastName}}</div>
+  <div>{{player.height}}</div>
+  <div>{{player.dateOfBirth}}</div>
+  <div>{{player.realTeam.name}}</div>
+</div>

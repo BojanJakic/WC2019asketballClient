@@ -1,7 +1,17 @@
+import { PlayerPosition } from '../enums/player-position';
+import { RealTeam } from './real-team';
+import { FantasyTeam } from './fantasy-team';
+import { PlayerStatistics } from './player-statistics';
+
 export interface Player {
     firstName: string;
     lastName: string;
     height: number;
-    dateOfBorth: Date;
-    
+    dateOfBirth: Date;
+    position: PlayerPosition;
+    fantasyValue: number;
+    realTeam: RealTeam;
+    fantasyTeam?: FantasyTeam[];
+    playerStatistics?: PlayerStatistics[];
+    profilePicture: string;
 }

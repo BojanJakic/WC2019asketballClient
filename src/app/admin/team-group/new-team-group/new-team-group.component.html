@@ -1,3 +1,19 @@
-<p>
-  new-team-group works!
-</p>
+<form *ngIf="isLoaded" [formGroup]="newTeamGroupForm">
+  <div class="form-group">
+    <label>Group: </label>
+    <select class="form-control" formControlName="groupName" [(ngModel)]="teamGroup.groupName">
+      <option *ngFor="let key of groupKeys" [value]="key - 1">{{groupsNames[key-1]}}</option>
+    </select>
+  </div>
+  <div style="margin-left: 20px;" ngbDropdown autoClose="outside">
+    <button ngbDropdownToggle>dropdown</button>
+    <div ngbDropdownMenu>
+      <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls ; let i=index">
+        <label>
+          <input [formControl]="control" id="team{{i}}" [value]="team" type="checkbox">{{teams[i].name}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <button (click)="save()">SAVE</button>
+</form>

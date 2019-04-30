@@ -3,38 +3,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AdminComponent } from '../app/admin/admin-home.component';
-import { TeamHomeComponent } from '../app/admin/teams/team-home/team-home.component';
-import { NewTeamComponent } from '../app/admin/teams/new-team/new-team.component';
-import { TeamsOverviewComponent } from '../app/admin/teams/teams-overview/teams-overview.component';
-import { PlayerHomeComponent } from '../app/admin/players/player-home/player-home.component';
-import { NewPlayerComponent } from '../app/admin/players/new-player/new-player.component';
-import { PlayersOverviewComponent } from '../app/admin/players/players-overview/players-overview.component';
-import { TeamGroupHomeComponent } from '../app/admin/team-group/team-group-home/team-group-home.component';
-import { NewTeamGroupComponent } from '../app/admin/team-group/new-team-group/new-team-group.component';
-import { TeamGroupOverviewComponent } from '../app/admin/team-group/team-group-overview/team-group-overview.component';
+import { AdminModule } from './admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TeamGroupService } from './services/team-group/team-group.service'
+import { RealTeamService } from './services/real-team/real-team.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PlayerService } from './services/player/player.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AdminComponent,
-    TeamHomeComponent,
-    NewTeamComponent,
-    TeamsOverviewComponent,
-    PlayerHomeComponent,
-    NewPlayerComponent,
-    PlayersOverviewComponent,
-    TeamGroupHomeComponent,
-    NewTeamGroupComponent,
-    TeamGroupOverviewComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule,
+    HttpClientModule,
+    NgbModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    TeamGroupService,
+    RealTeamService,
+    PlayerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

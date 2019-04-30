@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Player } from '../../../models/interfaces/player';
+import { FormControl, FormGroup } from '@angular/forms';
+import { RealTeamService } from '../../../services/real-team/real-team.service';
+import { RealTeam } from '../../../models/interfaces/real-team';
+import { PlayerService } from '../../../services/player/player.service';
 
 @Component({
   selector: 'app-new-player',
@@ -7,9 +12,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewPlayerComponent implements OnInit {
 
-  constructor() { }
+  player: Player = {
+    firstName: '',
+    lastName: '',
+    height: 0,
+    dateOfBirth: null,
+    position: null,
+    fantasyValue: 0,
+    realTeam: null,
+    profilePicture: ''
+  };
+  playerForm: FormGroup;
+  teams: RealTeam[] = [];
+  isLoaded: boolean;
+
+  constructor(private realTeamService: RealTeamService, private playerService: PlayerService) { }
 
   ngOnInit() {
+    this.realTeamService.getAll().subscribe((response: RealTeam[]) => {
+      this.teams = response;
+      this.isLoaded = true;
+      this.setFormData();
+    })
   }
 
+  save() {
+    this.playerService.save(this.playerForm.value).subscribe(response => {
+      console.log(response)
+    }, error => {
+      console.log(error)
+    })
+  }
+
+  setDateOfBirth() {
+    const date = this.playerForm.value.dateOfBirth;
+    this.playerForm.value.dateOfBirth = new Date(date.year, date.month, date.day)
+  }
+
+  onTeamChange(team: RealTeam) {
+    this.playerForm.controls['realTeam'].setValue(team);
+  }
+
+  setFormData() {
+    this.playerForm = new FormGroup({
+      firstName: new FormControl(this.player.firstName),
+      lastName: new FormControl(this.player.lastName),
+      height: new FormControl(this.player.height),
+      dateOfBirth: new FormControl(this.player.dateOfBirth),
+      position: new FormControl(this.player.position),
+      fantasyValue: new FormControl(this.player.fantasyValue),
+      profilePicture: new FormControl(this.player.profilePicture),
+      realTeam: new FormControl(this.player.realTeam)
+    })
+  }
 }
