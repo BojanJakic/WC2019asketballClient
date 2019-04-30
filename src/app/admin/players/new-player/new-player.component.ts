@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { RealTeamService } from '../../../services/real-team/real-team.service';
 import { RealTeam } from '../../../models/interfaces/real-team';
 import { PlayerService } from '../../../services/player/player.service';
+import { PlayerPosition } from '../../../models/enums/player-position'
 
 @Component({
   selector: 'app-new-player',
@@ -25,8 +26,13 @@ export class NewPlayerComponent implements OnInit {
   playerForm: FormGroup;
   teams: RealTeam[] = [];
   isLoaded: boolean;
+  positionKeys: string[];
+  positionNames: string[];
 
-  constructor(private realTeamService: RealTeamService, private playerService: PlayerService) { }
+  constructor(private realTeamService: RealTeamService, private playerService: PlayerService) { 
+    this.positionKeys = Object.keys(PlayerPosition).filter(Number)
+    this.positionNames = Object.values(PlayerPosition).filter(k => typeof k === 'string')
+  }
 
   ngOnInit() {
     this.realTeamService.getAll().subscribe((response: RealTeam[]) => {
@@ -37,6 +43,7 @@ export class NewPlayerComponent implements OnInit {
   }
 
   save() {
+    this.setDateOfBirth();
     this.playerService.save(this.playerForm.value).subscribe(response => {
       console.log(response)
     }, error => {

@@ -24,6 +24,12 @@
     </div>
   </div>
   <div>
+    <label>Position:</label>
+    <select class="form-control" formControlName="position" [(ngModel)]="player.position">
+      <option *ngFor="let key of positionKeys" [value]="key">{{positionNames[key-1]}}</option>
+    </select>
+  </div>
+  <div>
     <label>Date of birth:</label>
     <input formControlName="dateOfBirth" type="text" ngbDatepicker #d="ngbDatepicker"/>
     <button (click)="d.toggle()">Toggle</button>
