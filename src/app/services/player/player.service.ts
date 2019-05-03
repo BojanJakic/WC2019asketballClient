@@ -13,6 +13,10 @@ export class PlayerService {
      return this.http.post(this.baseUrl + '/player', player)
   }
 
+  delete(id: number) {
+    return this.http.delete(this.baseUrl + `/player/${id}`)
+  }
+
   getAll() {
     return this.http.get(this.baseUrl + '/player')
   }
