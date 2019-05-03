@@ -16,4 +16,8 @@ export class PlayerService {
   getAll() {
     return this.http.get(this.baseUrl + '/player')
   }
+
+  getById(id: number) {
+    return this.http.get(this.baseUrl + `/player/${id}`)
+  }
 }

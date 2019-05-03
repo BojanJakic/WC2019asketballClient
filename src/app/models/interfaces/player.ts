@@ -4,6 +4,7 @@ import { FantasyTeam } from './fantasy-team';
 import { PlayerStatistics } from './player-statistics';
 
 export interface Player {
+    id?: number
     firstName: string;
     lastName: string;
     height: number;
