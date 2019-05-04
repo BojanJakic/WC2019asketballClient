@@ -7,8 +7,9 @@ import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TeamGroupService } from './services/team-group/team-group.service'
 import { RealTeamService } from './services/real-team/real-team.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlayerService } from './services/player/player.service';
+import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PlayerService } from './services/player/player.service';
     AppRoutingModule,
     AdminModule,
     HttpClientModule,
-    NgbModule.forRoot(),
+    SharedModule,
+    CommonModule
   ],
   providers: [
     TeamGroupService,
