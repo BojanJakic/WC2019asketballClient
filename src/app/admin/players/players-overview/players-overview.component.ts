@@ -4,6 +4,7 @@ import { Player } from '../../../models/interfaces/player';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalComponent } from '../../../shared/modal/modal.component';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ModalData } from '../../../models/interfaces/modal-data';
 
 @Component({
   selector: 'app-players-overview',
@@ -14,6 +15,11 @@ export class PlayersOverviewComponent implements OnInit {
 
   players: Player[] = [];
   modalRef: NgbModalRef;
+  modalData: ModalData = {
+    type: '',
+    message: '',
+    actionButtonText: ''
+  };
 
   constructor(private playerService: PlayerService,
     private router: Router,
@@ -41,20 +47,41 @@ export class PlayersOverviewComponent implements OnInit {
       this.players = this.players.filter(current => {
         return current.id !== player.id
       })
+
+      this.getSuccessModalData(player);
     }, error => {
-      console.log(error)
+      this.getErrorModalData(player);
     })
   }
 
-  openModal(player: Player) {
+  openModal(player?: Player) {
     this.modalRef = this.modalService.open(ModalComponent)
-    this.modalRef.componentInstance.type = 'confirmation';
-    this.modalRef.componentInstance.message = `Are you sure you want to delete ${player.firstName} ${player.lastName}?`;
-    this.modalRef.componentInstance.actionButtonText = 'Delete';
+    this.modalRef.componentInstance.type = this.modalData.type;
+    this.modalRef.componentInstance.message = this.modalData.message;
+    this.modalRef.componentInstance.actionButtonText = this.modalData.actionButtonText
     this.modalRef.componentInstance.isConfirmed.subscribe(isConfirmed => {
-      if(isConfirmed) {
+      if (isConfirmed) {
         this.deletePlayer(player);
       }
     })
+  }
+
+  getSuccessModalData(player: Player) {
+    this.modalData.type = 'success';
+    this.modalData.message = `Player ${player.firstName} ${player.lastName} deleted successfuly!`
+    this.openModal();
+  }
+
+  getErrorModalData(player: Player) {
+    this.modalData.type = 'error';
+    this.modalData.message = `Player ${player.firstName} ${player.lastName} not deleted!`;
+    this.openModal();
+  }
+
+  getConfirmationModalData(player: Player) {
+    this.modalData.type = 'info';
+    this.modalData.message = `<div>Are you sure you want to delete ${player.firstName} ${player.lastName}?</div><div>Deleted player can not be reverted</div>`;
+    this.modalData.actionButtonText = 'Delete';
+    this.openModal(player);
   }
 }

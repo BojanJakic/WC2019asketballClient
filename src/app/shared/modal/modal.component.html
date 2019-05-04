@@ -1,10 +1,10 @@
 <div class="modal-body">
-  <div *ngIf="type !== 'confirmation'" class="modal-title">{{type}}</div>
-  <div class="modal-text">
-    {{message}}
+  <div class="modal-title">
+    <img height="40px" width="40px" src="/assets/{{type}}.png">
   </div>
+  <div class="modal-text" [innerHTML]="message"></div>
   <div class="footer d-flex justify-content-center align-items-center">
     <button (click)="cancel()" type="button" class="">Close</button>
-    <button (click)="action()" *ngIf="type === 'confirmation'" type="button" class="">{{actionButtonText}}</button>
+    <button (click)="action()" *ngIf="type === 'info'" type="button" class="">{{actionButtonText}}</button>
   </div>
 </div>
