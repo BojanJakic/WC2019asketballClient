@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin-home.component';
-import { HomeComponent } from '../app/home/home.component';
+import { HomeComponent } from '../app/components/home/home.component';
 import { TeamHomeComponent } from '../app/admin/teams/team-home/team-home.component';
 import { PlayerHomeComponent } from '../app/admin/players/player-home/player-home.component';
 import { TeamGroupHomeComponent } from '../app/admin/team-group/team-group-home/team-group-home.component';
