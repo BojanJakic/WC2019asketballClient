@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlayerService } from '../../../services/player/player.service';
 import { Player } from '../../../models/interfaces/player';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalComponent } from '../../../shared/modal/modal.component';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-players-overview',
@@ -11,8 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PlayersOverviewComponent implements OnInit {
 
   players: Player[] = [];
+  modalRef: NgbModalRef;
 
-  constructor(private playerService: PlayerService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private playerService: PlayerService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getPlayers();
@@ -30,13 +36,25 @@ export class PlayersOverviewComponent implements OnInit {
     this.router.navigate(['../new-player', { playerId: player.id }], { relativeTo: this.route });
   }
 
-  deletePlayer(playerId: number) {
-    this.playerService.delete(playerId).subscribe(response => {
-       this.players = this.players.filter(player => {
-         return player.id !== playerId
-       })
+  deletePlayer(player: Player) {
+    this.playerService.delete(player.id).subscribe(response => {
+      this.players = this.players.filter(current => {
+        return current.id !== player.id
+      })
     }, error => {
       console.log(error)
+    })
+  }
+
+  openModal(player: Player) {
+    this.modalRef = this.modalService.open(ModalComponent)
+    this.modalRef.componentInstance.type = 'confirmation';
+    this.modalRef.componentInstance.message = `Are you sure you want to delete ${player.firstName} ${player.lastName}?`;
+    this.modalRef.componentInstance.actionButtonText = 'Delete';
+    this.modalRef.componentInstance.isConfirmed.subscribe(isConfirmed => {
+      if(isConfirmed) {
+        this.deletePlayer(player);
+      }
     })
   }
 }
