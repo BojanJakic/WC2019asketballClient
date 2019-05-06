@@ -1,44 +1,65 @@
 <form [formGroup]="playerForm">
-  <div class="form-group">
-    <label>First name:</label>
-    <input formControlName="firstName" type="text" class="form-control">
+  <div class="form-row">
+    <div class="col-md-2 profile-image-container">
+      <img class="profile-image" src="assets/info.png">
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input id="firstName" formControlName="firstName" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" formControlName="lastName" type="text" class="form-control">
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label>Last name:</label>
-    <input formControlName="lastName" class="form-control" type="text">
+  <div class="spacer25"></div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="height">Height:</label>
+      <input type="text" class="form-control" id="height">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputState">Fantasy Value:</label>
+      <input type="text" class="form-control" id="fantasyValue">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="position">Position:</label>
+      <select class="form-control" formControlName="position" [(ngModel)]="player.position">
+        <option *ngFor="let position of positionNames; let i = index" [value]="position">{{position}}</option>
+      </select>
+    </div>
   </div>
-  <div>
-    <label>Height:</label>
-    <input formControlName="height" type="text">
-  </div>
-  <div>
-    <label>Team:</label>
-    <div ngbDropdown autoClose="outside">
-      <button (click)="getTeams()" ngbDropdownToggle>dropdown</button>
-      <div ngbDropdownMenu>
-        <div class="custom-control custom-radio" *ngFor="let team of teams; let i=index">
-          <input [checked]="player.realTeam && player.realTeam.id === team.id" name="teamName" id="team{{i}}" [value]="team" class="custom-control-input" (change)="onTeamChange(team)" type="radio">
-          <label for="team{{i}}" class="custom-control-label">{{team.name}}</label>
+  <div class="spacer15"></div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label style="display:block" for="dateOfBirth">Date of birth:</label>
+      <div>
+        <input class="form-control input-inline input-lg" readonly [value]="player.dateOfBirth" formControlName="dateOfBirth" ngbDatepicker
+          #d="ngbDatepicker" id="dateOfBirth" />
+        <button class="btn-common btn-lg" (click)="d.toggle()">Born</button>
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Team:</label>
+      <div ngbDropdown autoClose="outside">
+        <button class="btn-common btn-lg" (click)="getTeams()" ngbDropdownToggle>
+          Select Team
+        </button>
+        <div ngbDropdownMenu>
+          <div class="custom-control custom-radio" *ngFor="let team of teams; let i=index">
+            <input [checked]="player.realTeam && player.realTeam.id === team.id" name="teamName" id="team{{i}}" [value]="team" class="custom-control-input"
+              (change)="onTeamChange(team)" type="radio">
+            <label for="team{{i}}" class="custom-control-label">{{team.name}}</label>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="spacer15"></div>
   <div>
-    <label>Position:</label>
-    <select class="form-control" formControlName="position" [(ngModel)]="player.position">
-      <option *ngFor="let position of positionNames; let i = index" [value]="position">{{position}}</option>
-    </select>
+    <button (click)="save()" type="button" class="btn-common btn-lg">Save</button>
   </div>
-  <div>
-    <label>Date of birth:</label>
-    <input readonly [value]="player.dateOfBirth" formControlName="dateOfBirth" ngbDatepicker #d="ngbDatepicker" />
-    <button (click)="d.toggle()">Toggle</button>
-  </div>
-  <div>
-    <label>Fantasy Value</label>
-    <input formControlName="fantasyValue" type="text">
-  </div>
-  <div>
-    <button (click)="save()" type="button" class="btn btn-primary">Save</button>
-  </div>
+  <div class="spacer75"></div>
 </form>
