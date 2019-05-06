@@ -1,0 +1,28 @@
+.btn-common {
+	color: white;
+	background-color: #166bff;
+	border: 1px solid #166bff;
+	border-radius: .25rem; 
+	-webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-common:hover{
+	background-color:#0095d1;
+}
+
+.btn-common:active,
+.btn-common:focus,
+.btn-common.active {
+  outline: 0 !important;
+}
+
+.btn-sm {
+	padding: 2px 6px 2px 6px;
+	font-size: 12px;
+}
+
+.btn-lg {
+	padding: 6px 9px 6px 9px;
+	font-size: 16px;
+}

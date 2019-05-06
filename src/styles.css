@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./css/buttons.css";
+@import "./css/inputs.css";
+
+.spacer15{
+	height: 15px;
+}
+
+.spacer25 {
+  height: 25px;    
+}
+
+.spacer50 {
+  height: 50px;    
+}
+
+.spacer75 {
+  height: 75px;    
+}
+
+.spacer100 {
+	height: 100px;
+}

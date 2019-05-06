@@ -1,0 +1,37 @@
+input.form-control:active,
+input.form-control:focus,
+select.form-control:active,
+select.form-control:focus {
+  border-color: #166bff;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+input.form-control[readonly] {
+  background-color: white !important;
+}
+
+input.form-control:active[readonly],
+input.form-control:focus[readonly] {
+	outline: none;
+  -webkit-box-shadow: none;
+	box-shadow: none;
+	border: 1px solid #ced4da;
+}
+
+.input-sm {
+  width: 20%;    
+}
+
+.input-md {
+  width: 50%;    
+}
+
+.input-lg {
+  width: 85%;    
+}
+
+.input-inline {
+	display: inline-block;
+}
