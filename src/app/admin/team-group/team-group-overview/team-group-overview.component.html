@@ -1,3 +1,23 @@
-<p>
-  team-group-overview works!
-</p>
+<div class="spacer50"></div>
+<div class="col-md-8" *ngFor="let group of groups">
+  <div class="group-name">GROUP&nbsp;&nbsp;{{group.groupName}}</div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>TEAM</th>
+        <th>W/L</th>
+        <th>+/-</th>
+        <th>PTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of group.teams">
+        <td>{{team.name}}</td>
+        <td>{{team.wonGames}}/{{team.lostGame}}</td>
+        <td>{{team.scoredPoints}}:{{team.opponentsPoints}}</td>
+        <td>{{team.wonGames * 2}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="spacer50"></div>
+</div>

@@ -1,0 +1,17 @@
+.group-name {
+  text-align: center;
+  font-size: 30px;
+  background-color: #166bff;
+  color: #fff;
+  padding: 5px 0;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #c7cff6 !important
+}
+
+.table thead th {
+  font-style: italic;
+}

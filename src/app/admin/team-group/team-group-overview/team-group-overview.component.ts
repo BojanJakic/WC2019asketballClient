@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamGroupService } from '../../../services/team-group/team-group.service';
+import { TeamGroup } from '../../../models/interfaces/team-group';
 
 @Component({
   selector: 'app-team-group-overview',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamGroupOverviewComponent implements OnInit {
 
-  constructor() { }
+  groups: TeamGroup[];
+
+  constructor(private teamGroupService: TeamGroupService) { }
 
   ngOnInit() {
+    this.teamGroupService.getAll().subscribe((response: TeamGroup[]) => {
+      this.groups = response;
+    })
   }
-
 }

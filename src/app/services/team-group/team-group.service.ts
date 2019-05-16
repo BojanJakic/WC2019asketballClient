@@ -12,4 +12,8 @@ export class TeamGroupService {
   save(teamGroup: TeamGroup) {
     return this.http.post(this.baseUrl + '/team-group', teamGroup);
   }
+
+  getAll() {
+    return this.http.get(this.baseUrl + '/team-group');
+  }
 }
