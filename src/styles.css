@@ -6,19 +6,23 @@
 .spacer15{
 	height: 15px;
 }
-
 .spacer25 {
   height: 25px;    
 }
-
 .spacer50 {
   height: 50px;    
 }
-
 .spacer75 {
   height: 75px;    
 }
-
 .spacer100 {
 	height: 100px;
+}
+
+.valid {
+	border: 1px solid #28a745 !important;
+}
+
+.invalid {
+	border: 1px solid #dc3545 !important
 }

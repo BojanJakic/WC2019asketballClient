@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../../../models/interfaces/player';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RealTeamService } from '../../../services/real-team/real-team.service';
 import { RealTeam } from '../../../models/interfaces/real-team';
 import { PlayerService } from '../../../services/player/player.service';
@@ -21,7 +21,7 @@ export class NewPlayerComponent implements OnInit {
     height: null,
     dateOfBirth: null,
     position: null,
-    fantasyValue: 0,
+    fantasyValue: null,
     realTeam: null,
     profilePicture: ''
   };
@@ -29,6 +29,7 @@ export class NewPlayerComponent implements OnInit {
   teams: RealTeam[] = [];
   isLoaded: boolean;
   positionNames: string[];
+  isSubmitted: boolean;
 
   constructor(private realTeamService: RealTeamService, private playerService: PlayerService, private route: ActivatedRoute) {
     this.positionNames = Object.values(PlayerPosition).filter(k => typeof k === 'string')
@@ -59,6 +60,10 @@ export class NewPlayerComponent implements OnInit {
   }
 
   save() {
+    this.isSubmitted = true;
+    if(this.playerForm.invalid) {
+      return;
+    }
     this.setDateOfBirth();
     this.playerForm.value.id = this.player.id
     this.playerService.save(this.playerForm.value).subscribe((response: Player) => {
@@ -79,14 +84,14 @@ export class NewPlayerComponent implements OnInit {
 
   setFormData() {
     this.playerForm = new FormGroup({
-      firstName: new FormControl(this.player.firstName),
-      lastName: new FormControl(this.player.lastName),
-      height: new FormControl(this.player.height),
-      dateOfBirth: new FormControl(this.player.dateOfBirth),
-      position: new FormControl(this.player.position),
-      fantasyValue: new FormControl(this.player.fantasyValue),
+      firstName: new FormControl(this.player.firstName, Validators.required),
+      lastName: new FormControl(this.player.lastName, Validators.required),
+      height: new FormControl(this.player.height, Validators.required),
+      dateOfBirth: new FormControl(this.player.dateOfBirth, Validators.required),
+      position: new FormControl(this.player.position, Validators.required),
+      fantasyValue: new FormControl(this.player.fantasyValue, Validators.required),
       profilePicture: new FormControl(this.player.profilePicture),
-      realTeam: new FormControl(this.player.realTeam)
+      realTeam: new FormControl(this.player.realTeam, Validators.required)
     })
   }
 }

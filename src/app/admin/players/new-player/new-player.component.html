@@ -1,3 +1,9 @@
+<div class="spacer75"></div>
+<h2>Register New Player:</h2>
+<div class="required-fields-label" [ngStyle]="{'color': isSubmitted && !playerForm.valid ? '#dc3545' : ''}">
+  * All fields are required
+</div>
+<div class="spacer25"></div>
 <form [formGroup]="playerForm">
   <div class="form-row">
     <div class="col-md-2 profile-image-container">
@@ -6,39 +12,41 @@
     <div class="col-md-5">
       <div class="form-group">
         <label for="firstName">First Name:</label>
-        <input id="firstName" formControlName="firstName" type="text" class="form-control">
+        <input id="firstName" formControlName="firstName" type="text" class="form-control" [ngClass]="{'valid':isSubmitted && !playerForm.controls.firstName.errors, 'invalid': isSubmitted && playerForm.controls.firstName.errors }">
       </div>
       <div class="form-group">
         <label for="lastName">Last Name:</label>
-        <input id="lastName" formControlName="lastName" type="text" class="form-control">
+        <input id="lastName" formControlName="lastName" type="text" class="form-control" [ngClass]="{'valid':isSubmitted && !playerForm.controls.lastName.errors, 'invalid': isSubmitted && playerForm.controls.lastName.errors }">
       </div>
     </div>
   </div>
-  <div class="spacer25"></div>
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="height">Height:</label>
-      <input type="text" class="form-control" id="height">
+      <input type="text" class="form-control" id="height" formControlName="height"
+        [ngClass]="{'valid':isSubmitted && !playerForm.controls.height.errors, 'invalid': isSubmitted && playerForm.controls.height.errors }">
     </div>
     <div class="form-group col-md-2">
       <label for="inputState">Fantasy Value:</label>
-      <input type="text" class="form-control" id="fantasyValue">
+      <input type="text" class="form-control" id="fantasyValue" formControlName="fantasyValue" [ngClass]="{'valid':isSubmitted && !playerForm.controls.fantasyValue.errors, 'invalid': isSubmitted && playerForm.controls.fantasyValue.errors }">
     </div>
     <div class="form-group col-md-3">
       <label for="position">Position:</label>
-      <select class="form-control" formControlName="position" [(ngModel)]="player.position">
+      <select class="form-control" formControlName="position" [(ngModel)]="player.position" [ngClass]="{'valid':isSubmitted && !playerForm.controls.position.errors, 'invalid': isSubmitted && playerForm.controls.position.errors }">
         <option *ngFor="let position of positionNames; let i = index" [value]="position">{{position}}</option>
       </select>
     </div>
   </div>
-  <div class="spacer15"></div>
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="col-md-4">
       <label style="display:block" for="dateOfBirth">Date of birth:</label>
-      <div>
-        <input class="form-control input-inline input-lg" readonly [value]="player.dateOfBirth" formControlName="dateOfBirth" ngbDatepicker
-          #d="ngbDatepicker" id="dateOfBirth" />
-        <button class="btn-common btn-lg" (click)="d.toggle()">Born</button>
+      <div class="input-group">
+        <input class="form-control input-inline" readonly [value]="player.dateOfBirth" formControlName="dateOfBirth" ngbDatepicker
+          #d="ngbDatepicker" id="dateOfBirth" [ngClass]="{'valid':isSubmitted && !playerForm.controls.dateOfBirth.errors, 'invalid': isSubmitted && playerForm.controls.dateOfBirth.errors }"
+        />
+        <div class="input-group-append">
+          <button class="btn-common btn-lg" (click)="d.toggle()">Born</button>
+        </div>
       </div>
     </div>
     <div class="form-group col-md-3">
@@ -47,7 +55,7 @@
         <button class="btn-common btn-lg" (click)="getTeams()" ngbDropdownToggle>
           Select Team
         </button>
-        <div ngbDropdownMenu>
+        <div ngbDropdownMenu [ngClass]="{'valid':isSubmitted && !playerForm.controls.realTeam.errors, 'invalid': isSubmitted && playerForm.controls.realTeam.errors }">
           <div class="custom-control custom-radio" *ngFor="let team of teams; let i=index">
             <input [checked]="player.realTeam && player.realTeam.id === team.id" name="teamName" id="team{{i}}" [value]="team" class="custom-control-input"
               (change)="onTeamChange(team)" type="radio">
@@ -59,7 +67,7 @@
   </div>
   <div class="spacer15"></div>
   <div>
-    <button (click)="save()" type="button" class="btn-common btn-lg">Save</button>
+    <button (click)="save()" type="button" class="btn-common btn-lg" [disabled]="isSubmitted && !playerForm.valid">Save</button>
   </div>
   <div class="spacer75"></div>
 </form>

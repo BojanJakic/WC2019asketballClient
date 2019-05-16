@@ -1,19 +1,35 @@
-<form *ngIf="isLoaded" [formGroup]="newTeamGroupForm">
-  <div class="form-group">
-    <label>Group: </label>
-    <select class="form-control" formControlName="groupName" [(ngModel)]="teamGroup.groupName">
-      <option *ngFor="let groupName of groupsNames" [value]="groupName">{{groupName}}</option>
-    </select>
+<div class="spacer50"></div>
+<div class="row">
+  <div class="col-md-5">
+    <form class="new-group-form" *ngIf="isLoaded" [formGroup]="newTeamGroupForm">
+      <div class="form-group">
+        <label>Group Name: </label>
+        <select class="form-control" formControlName="groupName" [(ngModel)]="teamGroup.groupName">
+          <option *ngFor="let groupName of groupsNames" [value]="groupName">{{groupName}}</option>
+        </select>
+      </div>
+      <div ngbDropdown autoClose="outside">
+        <button class="btn-common btn-lg" ngbDropdownToggle>Select Teams</button>
+        <div ngbDropdownMenu>
+          <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls ; let i=index">
+            <label>
+              <input [formControl]="control" id="team{{i}}" [value]="team" type="checkbox">{{teams[i].name}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="spacer25"></div>
+      <button class="btn-common btn-lg" [disabled]="!isValid" (click)="save()">SAVE</button>
+    </form>
   </div>
-  <div style="margin-left: 20px;" ngbDropdown autoClose="outside">
-    <button ngbDropdownToggle>dropdown</button>
-    <div ngbDropdownMenu>
-      <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls ; let i=index">
-        <label>
-          <input [formControl]="control" id="team{{i}}" [value]="team" type="checkbox">{{teams[i].name}}
-        </label>
+  <div *ngIf="isLoaded && teamGroup.groupName" class="offset-1 col-md-6 group-container">
+    <div class="group-name">
+      Group {{teamGroup.groupName}}
+    </div>
+    <div class="teams-container">
+      <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls; let i = index">
+        <div *ngIf="control.value">{{teams[i].name}}</div>
       </div>
     </div>
   </div>
-  <button [disabled]="!isValid" (click)="save()">SAVE</button>
-</form>
+</div>

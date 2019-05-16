@@ -34,6 +34,7 @@ export class NewTeamGroupComponent implements OnInit {
   }
 
   get teamsArray() {
+   // console.log(this.newTeamGroupForm.get('teamName'))
     return this.newTeamGroupForm.get('teamName') as FormArray;
   }
 

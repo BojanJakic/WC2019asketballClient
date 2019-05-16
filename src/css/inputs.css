@@ -1,3 +1,5 @@
+/* Input fields */
+
 input.form-control:active,
 input.form-control:focus,
 select.form-control:active,
@@ -35,3 +37,22 @@ input.form-control:focus[readonly] {
 .input-inline {
 	display: inline-block;
 }
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+/* Radio buttons */
+
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  border-color: #166bff;
+  background-color: #166bff;
+  box-shadow: none;
+}
+
+.custom-control {
+  margin-left: 5%;
+}
+
+

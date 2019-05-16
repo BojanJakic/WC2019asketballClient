@@ -1,5 +1,15 @@
 .custom-control-input:checked~.custom-control-label::before {
-    color: #fff !important;
-    border-color: #007bff !important;
-    background-color: #007bff !important;
+  color: #fff !important;
+  border-color: #007bff !important;
+  background-color: #007bff !important;
+}
+
+.new-group-form {
+	display: inline-block;
+	width: 100%;
+}
+
+.group-container {
+  display: inline-block;
+  /* border: 1px solid #007bff; */
 }
