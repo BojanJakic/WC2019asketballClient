@@ -1,6 +1,8 @@
 <div class="spacer50"></div>
+<h2>Create New Group:</h2>
+<div class="spacer25"></div>
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-4">
     <form class="new-group-form" *ngIf="isLoaded" [formGroup]="newTeamGroupForm">
       <div class="form-group">
         <label>Group Name: </label>
@@ -22,14 +24,12 @@
       <button class="btn-common btn-lg" [disabled]="!isValid" (click)="save()">SAVE</button>
     </form>
   </div>
-  <div *ngIf="isLoaded && teamGroup.groupName" class="offset-1 col-md-6 group-container">
-    <div class="group-name">
-      Group {{teamGroup.groupName}}
-    </div>
-    <div class="teams-container">
-      <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls; let i = index">
-        <div *ngIf="control.value">{{teams[i].name}}</div>
-      </div>
-    </div>
+  <div *ngIf="isLoaded && teamGroup.groupName" class="offset-1 col-md-3 group-container">
+    <div class="group-name">Group&nbsp;{{teamGroup.groupName}}</div>
+    <table class="table table-striped">
+      <tr *ngFor="let control of newTeamGroupForm.controls['teamName'].controls; let i = index">
+        <td *ngIf="control.value">{{teams[i].name}}</td>
+      </tr>
+    </table>
   </div>
 </div>

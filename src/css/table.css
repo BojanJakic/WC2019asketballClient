@@ -1,0 +1,11 @@
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #c7cff6 !important
+}
+  
+.table thead th {
+  font-style: italic;
+}
+
+.table td, .table th {
+ padding: 8px 12px;
+}

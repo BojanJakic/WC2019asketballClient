@@ -13,3 +13,12 @@
   display: inline-block;
   /* border: 1px solid #007bff; */
 }
+
+.group-name {
+  font-size: 20px;
+  background-color: #007bff;
+  font-style: italic;
+  text-align: center;
+  padding: 5px 0px;
+  color: #fff;
+}

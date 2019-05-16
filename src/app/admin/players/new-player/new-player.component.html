@@ -38,8 +38,8 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="col-md-4">
-      <label style="display:block" for="dateOfBirth">Date of birth:</label>
+    <div class="col-md-4 form-group">
+      <label  for="dateOfBirth">Date of birth:</label>
       <div class="input-group">
         <input class="form-control input-inline" readonly [value]="player.dateOfBirth" formControlName="dateOfBirth" ngbDatepicker
           #d="ngbDatepicker" id="dateOfBirth" [ngClass]="{'valid':isSubmitted && !playerForm.controls.dateOfBirth.errors, 'invalid': isSubmitted && playerForm.controls.dateOfBirth.errors }"
@@ -69,5 +69,5 @@
   <div>
     <button (click)="save()" type="button" class="btn-common btn-lg" [disabled]="isSubmitted && !playerForm.valid">Save</button>
   </div>
-  <div class="spacer75"></div>
+  <!-- <div class="spacer75"></div> -->
 </form>

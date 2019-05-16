@@ -2,6 +2,7 @@
 
 @import "./css/buttons.css";
 @import "./css/inputs.css";
+@import "./css/table.css";
 
 .spacer15{
 	height: 15px;
@@ -25,4 +26,14 @@
 
 .invalid {
 	border: 1px solid #dc3545 !important
+}
+
+form{
+	background-color: #8080801a;
+	padding: 20px;
+}
+
+form label {
+	/* font-size: 20px; */
+	/* width:70%; */
 }

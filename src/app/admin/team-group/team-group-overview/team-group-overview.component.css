@@ -8,10 +8,10 @@
   font-weight: bold;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
+/* .table-striped tbody tr:nth-of-type(odd) {
   background-color: #c7cff6 !important
 }
 
 .table thead th {
   font-style: italic;
-}
+} */
