@@ -13,10 +13,9 @@
       <div ngbDropdown autoClose="outside">
         <button class="btn-common btn-lg" ngbDropdownToggle>Select Teams</button>
         <div ngbDropdownMenu>
-          <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls ; let i=index">
-            <label>
-              <input [formControl]="control" id="team{{i}}" [value]="team" type="checkbox">{{teams[i].name}}
-            </label>
+          <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls ; let i=index" class="custom-control custom-checkbox">
+            <input [formControl]="control" type="checkbox" class="custom-control-input" id="team{{i}}">
+            <label class="custom-control-label" for="team{{i}}">{{teams[i].name}}</label>
           </div>
         </div>
       </div>
@@ -26,9 +25,9 @@
   </div>
   <div *ngIf="isLoaded && teamGroup.groupName" class="offset-1 col-md-3 group-container">
     <div class="group-name">Group&nbsp;{{teamGroup.groupName}}</div>
-    <table class="table table-striped">
+    <table style="border-bottom:1px solid red !important" class="table">
       <tr *ngFor="let control of newTeamGroupForm.controls['teamName'].controls; let i = index">
-        <td *ngIf="control.value">{{teams[i].name}}</td>
+        <td style="border-bottom:1px solid #166bff !important"*ngIf="control.value">{{teams[i].name}}</td>
       </tr>
     </table>
   </div>

@@ -1,10 +1,12 @@
+<div class="spacer15"></div>
 <div class="row">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-xlg-10">
-		<a [ngStyle]="{'border-bottom': activeLink === 'players' ? '2px solid #007bff' : none}" class="link" href="#" routerLink="players">Players</a>
-		<a class="link" href="#" routerLink="teams">Teams</a>
-		<a class="link" href="#" routerLink="team-groups">Teams Overview</a>
+		<a [ngClass]="{'active-link': activeLink.includes('players')}" [ngStyle]="{'border-bottom': activeLink.includes('players') ? '2px solid #06209b' : none}" class="link" href="#" routerLink="players">Players</a>
+		<a [ngClass]="{'active-link': activeLink.includes('teams')}" [ngStyle]="{'border-bottom': activeLink.includes('teams') ? '2px solid #06209b' : none}" class="link" href="#" routerLink="teams">Teams</a>
+		<a [ngClass]="{'active-link': activeLink.includes('groups')}" [ngStyle]="{'border-bottom': activeLink.includes('groups') ? '2px solid #06209b' : none}" class="link" href="#" routerLink="team-groups">Groups</a>
 	</div>
 </div>
+<div class="spacer25"></div>
 <div class="row">
 	<div class="col-sm-10 col-md-10 col-lg-10 col-xlg-10">
 		<router-outlet></router-outlet>
