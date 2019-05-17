@@ -10,22 +10,26 @@
           <option *ngFor="let groupName of groupsNames" [value]="groupName">{{groupName}}</option>
         </select>
       </div>
-      <div ngbDropdown autoClose="outside">
+      <div class="error-message" *ngIf="isSubmited && newTeamGroupForm.get('groupName').errors?.validateName">* This name already exist</div>
+      <div class="error-message" *ngIf="isSubmited && newTeamGroupForm.get('groupName').errors?.required">* This field is required</div>
+      <div class="spacer10"></div>
+      <div ngbDropdown autoClose="outside" class="form-group">
         <button class="btn-common btn-lg" ngbDropdownToggle>Select Teams</button>
         <div ngbDropdownMenu>
           <div *ngFor="let control of newTeamGroupForm.controls['teamName'].controls ; let i=index" class="custom-control custom-checkbox">
-            <input [formControl]="control" type="checkbox" class="custom-control-input" id="team{{i}}">
+            <input (change)="validate($event)" [formControl]="control" type="checkbox" class="custom-control-input team-input" id="team{{i}}">
             <label class="custom-control-label" for="team{{i}}">{{teams[i].name}}</label>
           </div>
         </div>
       </div>
-      <div class="spacer25"></div>
-      <button class="btn-common btn-lg" [disabled]="!isValid" (click)="save()">SAVE</button>
+      <div *ngIf="isSubmited && newTeamGroupForm.get('teamName').errors?.selectedTeamsCount" class="error-message">* Please select 4 teams</div>
+      <div class="spacer15"></div>
+      <button class="btn-common btn-lg" [disabled]="isSubmited && !newTeamGroupForm.valid" (click)="save()">SAVE</button>
     </form>
   </div>
   <div *ngIf="isLoaded && teamGroup.groupName" class="offset-1 col-md-3 group-container">
     <div class="group-name">Group&nbsp;{{teamGroup.groupName}}</div>
-    <table style="border-bottom:1px solid red !important" class="table">
+    <table class="table">
       <tr *ngFor="let control of newTeamGroupForm.controls['teamName'].controls; let i = index">
         <td style="border-bottom:1px solid #166bff !important"*ngIf="control.value">{{teams[i].name}}</td>
       </tr>
