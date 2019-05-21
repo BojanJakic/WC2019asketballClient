@@ -10,8 +10,8 @@
           <option *ngFor="let groupName of groupsNames" [value]="groupName">{{groupName}}</option>
         </select>
       </div>
-      <div class="error-message" *ngIf="isSubmited && newTeamGroupForm.get('groupName').errors?.validateName">* This name already exist</div>
-      <div class="error-message" *ngIf="isSubmited && newTeamGroupForm.get('groupName').errors?.required">* This field is required</div>
+      <div style="margin-top: -15px;" class="error-message" *ngIf="isSubmited && newTeamGroupForm.get('groupName').errors?.validateName">* This name already exist</div>
+      <div style="margin-top: -15px;" class="error-message" *ngIf="isSubmited && newTeamGroupForm.get('groupName').errors?.required">* This field is required</div>
       <div class="spacer10"></div>
       <div ngbDropdown autoClose="outside" class="form-group">
         <button class="btn-common btn-lg" ngbDropdownToggle>Select Teams</button>
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="isSubmited && newTeamGroupForm.get('teamName').errors?.selectedTeamsCount" class="error-message">* Please select 4 teams</div>
+      <div style="margin-top: -15px;" *ngIf="isSubmited && newTeamGroupForm.get('teamName').errors?.selectedTeamsCount" class="error-message">* Please select 4 teams</div>
       <div class="spacer15"></div>
       <button class="btn-common btn-lg" [disabled]="isSubmited && !newTeamGroupForm.valid" (click)="save()">SAVE</button>
     </form>

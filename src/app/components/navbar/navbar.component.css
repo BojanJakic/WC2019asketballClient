@@ -1,0 +1,33 @@
+.profile-picture-container:hover {
+  cursor: pointer;      
+}
+  
+.dropdown-item:hover, .nav-link {
+  cursor: pointer;
+}
+  
+.dropdown-item i, .nav-link i {
+  margin-right: 7px;
+}
+
+.bg-light {
+	background-color: transparent !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff !important;
+  font-size: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-size: 20px !important;
+}
+
+.navbar {
+  padding: 5px 16px !important;
+}

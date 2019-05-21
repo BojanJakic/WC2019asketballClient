@@ -12,6 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user/user.service';
+import { LoginService } from './services/login/login.service';
 
 
 @NgModule({
@@ -20,6 +26,8 @@ import { HeaderComponent } from './components/header/header.component';
     HomeComponent,
     NavbarComponent,
     HeaderComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,12 +35,16 @@ import { HeaderComponent } from './components/header/header.component';
     AdminModule,
     HttpClientModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     TeamGroupService,
     RealTeamService,
-    PlayerService
+    PlayerService,
+    UserService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

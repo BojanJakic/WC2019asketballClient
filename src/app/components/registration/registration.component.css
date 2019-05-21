@@ -1,0 +1,15 @@
+.required-fields-label {
+  font-size: 12px;
+}
+
+.profile-image-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.profile-image {
+	height: 70%;
+	width: 70%;
+	vertical-align: middle;
+}

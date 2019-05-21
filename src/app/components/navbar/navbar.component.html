@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="navbar-brand" href="#">
+    <img width="110px" height="60px" src="/assets/FIBAWC2019.jpg" />
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,6 +16,27 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" routerLink="/admin">Admin 2</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav">
+      <li *ngIf="user" class="nav-item dropdown">
+        <div class="nav-link profile-picture-container" data-toggle="dropdown">
+          <img height="30px" width="30px" src="/assets/profile_picture.png" />
+        </div>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <span class="dropdown-item">
+            <i class="fas fa-user"></i>Profile</span>
+          <span (click)="signout()" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>Sign out</span>
+        </div>
+      </li>
+      <li *ngIf="!user" class="nav-item">
+        <span class="nav-link" href="#" routerLink="/login">
+          <i class="fas fa-sign-in-alt"></i>Sign in</span>
+      </li>
+      <li *ngIf="!user"class="nav-item">
+        <span class="nav-link" href="#" routerLink="/registration">
+          <i class="fas fa-user"></i>Sign up</span>
       </li>
     </ul>
   </div>

@@ -4,8 +4,21 @@
   
 .table thead th {
   font-style: italic;
+  background-color: #06209b;
+  color: #fff;
+  padding: 10px 12px;
 }
 
-.table td, .table th {
- padding: 8px 12px;
+.table td {
+  padding: 6px 12px;
+}
+
+.clickable-cell:hover {
+  cursor: pointer;
+  color: #166bff;
+}
+
+.clickable-cell {
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
