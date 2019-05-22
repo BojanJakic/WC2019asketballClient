@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RealTeamService } from '../../../services/real-team/real-team.service';
+import { RealTeam } from '../../../models/interfaces/real-team';
 
 @Component({
   selector: 'app-teams-overview',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsOverviewComponent implements OnInit {
 
-  constructor() { }
+  teams: RealTeam[];
+
+  constructor(private realTeamService: RealTeamService) { }
 
   ngOnInit() {
+    this.realTeamService.getAll().subscribe((response: RealTeam[]) => {
+      this.teams = response;
+      console.log(this.teams)
+    })
   }
-
 }

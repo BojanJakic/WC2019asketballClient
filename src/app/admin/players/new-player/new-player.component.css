@@ -13,3 +13,8 @@
 .required-fields-label {
   font-size: 12px;
 }
+
+.new-player-container {
+	width: 80%;
+  margin-left: 10%;
+}

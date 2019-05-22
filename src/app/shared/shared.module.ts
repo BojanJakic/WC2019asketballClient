@@ -14,6 +14,9 @@ import { CommonModule } from '@angular/common';
     entryComponents: [
       ModalComponent
     ],
+    exports: [
+      NgbModule
+    ]
   })
   export class SharedModule { }
   
