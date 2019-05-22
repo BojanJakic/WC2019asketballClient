@@ -1,5 +1,5 @@
-<div style="background-color: #f8f9fa; padding: 15px 0 15px 0;margin-left: 0px" class="row">
-	<div class="col-sm-12 col-md-12 col-lg-12 col-xlg-12">
+<div class="row link-container">
+	<div style="margin-right: 0px !important"class="col-sm-12 col-md-12 col-lg-12 col-xlg-12">
 		<a [ngClass]="{'active-link': activeLink.includes('players')}" [ngStyle]="{'border-bottom': activeLink.includes('players') ? '2px solid #06209b' : none}" class="link" href="#" routerLink="players">Players</a>
 		<a [ngClass]="{'active-link': activeLink.includes('teams')}" [ngStyle]="{'border-bottom': activeLink.includes('teams') ? '2px solid #06209b' : none}" class="link" href="#" routerLink="teams">Teams</a>
 		<a [ngClass]="{'active-link': activeLink.includes('groups')}" [ngStyle]="{'border-bottom': activeLink.includes('groups') ? '2px solid #06209b' : none}" class="link" href="#" routerLink="team-groups">Groups</a>

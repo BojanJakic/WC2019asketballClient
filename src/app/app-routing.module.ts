@@ -13,12 +13,14 @@ import { TeamGroupOverviewComponent } from '../app/admin/team-group/team-group-o
 import { NewTeamGroupComponent } from '../app/admin/team-group/new-team-group/new-team-group.component';
 import { LoginComponent } from '../app/components/login/login.component';
 import { RegistrationComponent } from '../app/components/registration/registration.component';
+import { PlayerDetailsComponent } from './shared/player-details/player-details.component';
 
 
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent },
 	{ path: 'login', component: LoginComponent},
-	{ path: 'registration', component: RegistrationComponent}
+	{ path: 'registration', component: RegistrationComponent},
+	{ path: 'player-details', component: PlayerDetailsComponent}
 ]
 
 @NgModule({
